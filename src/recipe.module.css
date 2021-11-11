@@ -9,10 +9,3 @@
     align-items: center;
     min-width: 40%;
 };
-
-.image {
-    margin: 50px;
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
-};

@@ -9,7 +9,7 @@ const App = () => {
 
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("chicken");
+  const [query, setQuery] = useState("random");
 
   useEffect(() => {
     getRecipes();
@@ -19,7 +19,6 @@ const App = () => {
     const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
     setRecipes(data.hits);
-    console.log(data.hits);
   };
 
   const updateSearch = e => {
@@ -29,11 +28,12 @@ const App = () => {
   const getSearch = e => {
     e.preventDefault(); 
     setQuery(search);
-    setSearch('');
+    setSearch('')
   };
 
   return (
     <div className="App">
+      <h1 className='title'>RecipeFinder</h1>
       <form onSubmit={getSearch} className="search-form">
           <input 
           className="search-bar" 
@@ -49,7 +49,6 @@ const App = () => {
       <div className="recipes">
       {recipes.map(recipe => (
         <Recipe 
-        key={recipe.recipe.label}
         title={recipe.recipe.label} 
         calories={recipe.recipe.calories}
         image={recipe.recipe.image}
